@@ -60,9 +60,11 @@ done = False
 while done is False:
     print(f"\nYou are currently in {room[p.current_room].name}.")
     print(room[p.current_room].description)
+
     try:
         selection = input("Would you like to head n, s, e, or w (or exit)? ")
         new_room = None
+
         if selection.lower() == "exit":
             print("\nThanks for playing!\n")
             done = True
@@ -77,21 +79,23 @@ while done is False:
             new_room = room[p.current_room].w_to
         else:
             print("\nPlease enter n, s, e, w, or exit.")
+            continue
 
         if new_room.name == "Outside Cave Entrance":
             p.set_room("outside")
         elif new_room.name == "Foyer":
             p.set_room("foyer")
         elif new_room.name == "Grand Overlook":
-            p.set_room = "overlook"
+            p.set_room("overlook")
         elif new_room.name == "Narrow Passage":
-            p.set_room = "narrow"
+            p.set_room("narrow")
         elif new_room.name == "Treasure Chamber":
-            p.set_room = "treasure"
+            p.set_room("treasure")
         else:
             print("\nYou must select a valid direction.")
-            continue
-        print(p.room)
+
+        print(p.current_room)
+
     except:
         print("\nThat is not a valid input.")
         continue
