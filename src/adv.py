@@ -1,6 +1,5 @@
 from room import Room
 from player import Player
-import sys
 
 # Declare all the rooms
 
