@@ -20,7 +20,7 @@ class Player:
         """
         Replacement string method for the Player class
         """
-        return f"The current player is {self.name} and they are in {self.room}."
+        return f"Name: {self.name}, Room: {self.room}."
 
     def __repr__(self):
         """

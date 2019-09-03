@@ -12,11 +12,17 @@ class Room:
         self.w_to = None
         self.e_to = None
 
+    def get_name(self):
+        """
+        Returns the name of the instantiated Room class
+        """
+        return self.name
+
     def __str__(self):
         """
         Replacement string method for the Room class
         """
-        return f"{self.name}"
+        return f"Name: {self.name}, Description: {self.description}"
 
     def __repr__(self):
         """
