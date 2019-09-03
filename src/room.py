@@ -3,10 +3,23 @@
 
 
 class Room:
-    def __init__(self, name, description):
+    def __init__(self, name, description):  # add back in item_list
         self.name = name
         self.description = description
+        # self.item_list = item_list
         self.n_to = None
         self.s_to = None
         self.w_to = None
         self.e_to = None
+
+    def __str__(self):
+        """
+        Replacement string method for the Room class
+        """
+        return f"{self.name}"
+
+    def __repr__(self):
+        """
+        REPR method for the Room class
+        """
+        return f"Room({repr(self.name)}, {repr(self.description)})"

@@ -10,11 +10,11 @@ class Player:
         self.current_room = "outside"
         self.name = name
 
-    def set_room(self, room):
+    def set_room(self, current_room):
         """
         This method sets the new room for the player as they move throughout the game
         """
-        self.room = room
+        self.current_room = current_room
 
     def __str__(self):
         """

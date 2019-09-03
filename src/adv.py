@@ -53,17 +53,45 @@ p = Player(player_name)
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
-print(f"Ready {p.name}")
+print(f"\nReady {p.name}")
 
 done = False
 
 while done is False:
     print(f"\nYou are currently in {room[p.current_room].name}.")
-    print("\n" + room[p.current_room].description)
-    i = input("\nWould you like to head n, s, e, or w (or exit)? ")
+    print(room[p.current_room].description)
+    try:
+        selection = input("Would you like to head n, s, e, or w (or exit)? ")
+        new_room = None
+        if selection.lower() == "exit":
+            print("\nThanks for playing!\n")
+            done = True
+            continue
+        elif selection.lower() == "n":
+            new_room = room[p.current_room].n_to
+        elif selection.lower() == "s":
+            new_room = room[p.current_room].s_to
+        elif selection.lower() == "e":
+            new_room = room[p.current_room].e_to
+        elif selection.lower() == "w":
+            new_room = room[p.current_room].w_to
+        else:
+            print("\nPlease enter n, s, e, w, or exit.")
 
-    if i.lower() == "exit":
-        print("\nThanks for playing!\n")
-        sys.exit(1)
-    else:
+        if new_room.name == "Outside Cave Entrance":
+            p.set_room("outside")
+        elif new_room.name == "Foyer":
+            p.set_room("foyer")
+        elif new_room.name == "Grand Overlook":
+            p.set_room = "overlook"
+        elif new_room.name == "Narrow Passage":
+            p.set_room = "narrow"
+        elif new_room.name == "Treasure Chamber":
+            p.set_room = "treasure"
+        else:
+            print("\nYou must select a valid direction.")
+            continue
+        print(p.room)
+    except:
+        print("\nThat is not a valid input.")
         continue
