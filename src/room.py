@@ -33,7 +33,6 @@ class Room:
         for i in self.item_list:
             if i.name is not item.name:
                 new_item_list.append(i)
-        print(new_item_list)
         self.item_list = new_item_list
 
     def __getattr__(self, name):

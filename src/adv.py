@@ -127,15 +127,27 @@ while done is False:
             new_room = room[p.current_room].w_to
             choose_room(new_room)
         elif selection[0] == "take" or selection[0] == "get":
+            item_moved = False
             for item in room[p.current_room].item_list:
                 if item.name.lower() == selection[1]:
                     p.add_item(item)
                     room[p.current_room].remove_item(item)
+                    item_moved = True
+            if not item_moved:
+                print("\n*************************************************")
+                print("\nThere's no item by that name.")
+                continue
         elif selection[0] == "drop" or selection[0] == "leave":
+            item_moved = False
             for item in p.item_list:
                 if item.name.lower() == selection[1]:
                     p.remove_item(item)
                     room[p.current_room].add_item(item)
+                    item_moved = True
+            if not item_moved:
+                print("\n*************************************************")
+                print("\nThat item is not in your inventory.")
+                continue
 
     except:
         print("\n*************************************************")
