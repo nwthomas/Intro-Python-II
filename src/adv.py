@@ -77,8 +77,10 @@ while done is False:
     print("\n************************************************")
     print(f"\nYou are currently in {room[p.current_room].name}.")
     print(room[p.current_room].description)
+    print("\nItems in inventory:")
+
     if len(room[p.current_room].item_list) > 0:
-        print("\nHere's the items in this room:")
+        print("\nItems in room:")
         room[p.current_room].print_items()
 
     try:

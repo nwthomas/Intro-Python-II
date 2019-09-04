@@ -3,6 +3,12 @@ class Item:
         self.name = name
         self.description = description
 
+    def __getattr__(self, name):
+        """
+        Defaults to None for any attribute not in the class currently
+        """
+        return None
+
     def __str__(self):
         """
         Replacement string method for the Item class

@@ -10,7 +10,7 @@ class Room:
 
     def print_items(self):
         """
-        Prints all items in the items list
+        Prints all items in the items_list
         """
         for item in self.item_list:
             print(f"Item Name: {item.name}, Description: {item.description}")
