@@ -9,18 +9,18 @@ room = {
                      "North of you, the cave mount beckons", []),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
-passages run north and east.""", [Item("Key", "An ancient gold key that shines with an ethereal shinner.")]),
+passages run north and east.""", [Item("key", "An ancient gold key that shines with an ethereal shinner.")]),
 
     'overlook': Room("Grand Overlook", """A steep cliff appears before you, falling
 into the darkness. Ahead to the north, a light flickers in
 the distance, but there is no way across the chasm.""", []),
 
     'narrow':   Room("Narrow Passage", """The narrow passage bends here from west
-to north. The smell of gold permeates the air.""", [Item("Knife", "A cruel, rusty knife twisted by age and hate.")]),
+to north. The smell of gold permeates the air.""", [Item("knife", "A cruel, rusty knife twisted by age and hate.")]),
 
     'treasure': Room("Treasure Chamber", """You've found the long-lost treasure
 chamber! Sadly, it has already been completely emptied by
-earlier adventurers. The only exit is to the south.""", [Item("Treasure", "A chest of rubies, pearls, and gold coins.")]),
+earlier adventurers. The only exit is to the south.""", [Item("treasure", "A chest of rubies, pearls, and gold coins.")]),
 }
 
 
@@ -41,7 +41,7 @@ room['treasure'].s_to = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room.
 player_name = input("What is your name? ")
-p = Player(player_name)
+p = Player(player_name, [])
 
 # Write a loop that:
 #
@@ -84,21 +84,25 @@ while done is False:
         room[p.current_room].print_items()
 
     try:
-        selection = input("Would you like to head n, s, e, or w (or exit)? ")
+        selection = input(
+            "Would you like to head n, s, e, or w (or exit)? ").strip().lower().split(" ")
+
         new_room = None
 
-        if selection.lower() == "exit":
+        if selection[0].lower() == "exit":
             print("\nThanks for playing!\n")
             done = True
             continue
-        elif selection.lower() == "n":
+        elif selection[0].lower() == "n":
             new_room = room[p.current_room].n_to
-        elif selection.lower() == "s":
+        elif selection[0].lower() == "s":
             new_room = room[p.current_room].s_to
-        elif selection.lower() == "e":
+        elif selection[0].lower() == "e":
             new_room = room[p.current_room].e_to
-        elif selection.lower() == "w":
+        elif selection[0].lower() == "w":
             new_room = room[p.current_room].w_to
+        elif selection[0] == "take" or selection[0] == "get":
+            print()
         else:
             print("\nPlease enter n, s, e, w, or exit.")
             continue
