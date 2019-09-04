@@ -13,7 +13,7 @@ class Item:
         """
         Replacement string method for the Item class
         """
-        return f"Name: {self.name}, Description: {self.description}."
+        return f"{self.name} - {self.description}."
 
     def __repr__(self):
         """
