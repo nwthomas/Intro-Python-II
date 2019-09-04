@@ -56,6 +56,22 @@ print(f"\nReady {p.name}")
 
 done = False
 
+
+def choose_room(new_room):
+    if new_room.name == "Outside Cave Entrance":
+        p.set_room("outside")
+    elif new_room.name == "Foyer":
+        p.set_room("foyer")
+    elif new_room.name == "Grand Overlook":
+        p.set_room("overlook")
+    elif new_room.name == "Narrow Passage":
+        p.set_room("narrow")
+    elif new_room.name == "Treasure Chamber":
+        p.set_room("treasure")
+    else:
+        print("\nYou must select a valid direction.")
+
+
 while done is False:
     print(f"\nYou are currently in {room[p.current_room].name}.")
     print(room[p.current_room].description)
@@ -80,18 +96,7 @@ while done is False:
             print("\nPlease enter n, s, e, w, or exit.")
             continue
 
-        if new_room.name == "Outside Cave Entrance":
-            p.set_room("outside")
-        elif new_room.name == "Foyer":
-            p.set_room("foyer")
-        elif new_room.name == "Grand Overlook":
-            p.set_room("overlook")
-        elif new_room.name == "Narrow Passage":
-            p.set_room("narrow")
-        elif new_room.name == "Treasure Chamber":
-            p.set_room("treasure")
-        else:
-            print("\nYou must select a valid direction.")
+        choose_room(new_room)
 
         print(p.current_room)
 
