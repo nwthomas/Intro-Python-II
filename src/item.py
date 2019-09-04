@@ -3,6 +3,20 @@ class Item:
         self.name = name
         self.description = description
 
+    def on_take(self):
+        """
+        Used to perform business logic when the item is picked up by the player
+        """
+        print("\n*************************************************")
+        print(f"\nYou have picked up {self.name}.")
+
+    def on_drop(self):
+        """
+        Used to perform business logic when the item is dropped up by the player
+        """
+        print("\n*************************************************")
+        print(f"\nYou have dropped the {self.name}.")
+
     def __getattr__(self, name):
         """
         Defaults to None for any attribute not in the class currently
@@ -31,7 +45,7 @@ class Lamp(Item):
         """
         Replacement string method for the Lamp class
         """
-        return f"{self.color} {self.name} - {self.description}"
+        return f"{self.name} - {self.color}, {self.description}"
 
     def __repr__(self):
         """

@@ -139,6 +139,7 @@ while done is False:
                     p.add_item(item)
                     room[p.current_room].remove_item(item)
                     item_moved = True
+                    item.on_take()
             if not item_moved:
                 print("\n*************************************************")
                 print("\nThere's no item by that name.")
@@ -150,6 +151,7 @@ while done is False:
                     p.remove_item(item)
                     room[p.current_room].add_item(item)
                     item_moved = True
+                    item.on_drop()
                 if item.name == "torch":
                     print("\n*************************************************")
                     print("\nYou shouldn't leave your torch here!")
