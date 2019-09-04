@@ -31,6 +31,13 @@ class Player:
         """
         self.item_list.append(item)
 
+    def drop_item(self, item):
+        """
+        Drops an item from the Players's inventory
+        """
+        i = self.item_list.index(item)
+        self.item_list = self.item_list[i:i+1]
+
     def __getattr__(self, name):
         """
         Defaults to None for any attribute not in the class currently

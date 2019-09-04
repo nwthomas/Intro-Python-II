@@ -102,7 +102,11 @@ while done is False:
         elif selection[0].lower() == "w":
             new_room = room[p.current_room].w_to
         elif selection[0] == "take" or selection[0] == "get":
-            print()
+            moving_item = None
+            for item in room[p.current_room].item_list:
+                if item.name.lower() == selection[1]:
+                    print()
+
         else:
             print("\nPlease enter n, s, e, w, or exit.")
             continue
