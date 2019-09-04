@@ -87,7 +87,7 @@ def build_initial_comment():
         s += " drop [item],"
     if len(room[p.current_room].item_list) > 0:
         s += " get [item],"
-    s += " or (exit): "
+    s += " inventory/i, or (exit): "
     return s
 
 
@@ -95,10 +95,6 @@ while done is False:
     print("\n*************************************************")
     print(f"\nYou are currently in {room[p.current_room].name}.")
     print(room[p.current_room].description)
-    if len(p.item_list) > 0:
-        print("\nItems in inventory:")
-        for item in p.item_list:
-            print(item)
 
     if len(room[p.current_room].item_list) > 0:
         print("\nItems in room:")
@@ -114,6 +110,15 @@ while done is False:
             print("\nThanks for playing!\n")
             done = True
             continue
+        elif selection[0] == "i" or selection[0] == "inventory":
+            if len(p.item_list) > 0:
+                print("\n*************************************************")
+                print("\nItems in inventory:")
+                for item in p.item_list:
+                    print(item)
+            else:
+                print("\n*************************************************")
+                print(f"\nThere are no items in your inventory.")
         elif selection[0].lower() == "n":
             new_room = room[p.current_room].n_to
             choose_room(new_room)
