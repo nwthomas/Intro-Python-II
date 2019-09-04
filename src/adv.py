@@ -1,6 +1,7 @@
 from room import Room
 from player import Player
 from item import Item
+from item import Lamp
 
 # Declare all the rooms
 
@@ -9,11 +10,11 @@ room = {
                      "North of you, the cave mount beckons", []),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
-passages run north and east.""", [Item("key", "An ancient gold key that shines with an ethereal shinner.")]),
+passages run north and east.""", [Lamp("torch", "A long stick wrapped in oiled linens. The fire sways in an invisible breeze.", "red")]),
 
     'overlook': Room("Grand Overlook", """A steep cliff appears before you, falling
 into the darkness. Ahead to the north, a light flickers in
-the distance, but there is no way across the chasm.""", []),
+the distance, but there is no way across the chasm.""", [Item("key", "An ancient gold key that shines with an ethereal shinner.")]),
 
     'narrow':   Room("Narrow Passage", """The narrow passage bends here from west
 to north. The smell of gold permeates the air.""", [Item("knife", "A cruel, rusty knife twisted by age and hate.")]),
@@ -149,6 +150,9 @@ while done is False:
                     p.remove_item(item)
                     room[p.current_room].add_item(item)
                     item_moved = True
+                if item.name == "torch":
+                    print("\n*************************************************")
+                    print("\nYou shouldn't leave your torch here!")
             if not item_moved:
                 print("\n*************************************************")
                 print("\nThat item is not in your inventory.")

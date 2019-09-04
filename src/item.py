@@ -20,3 +20,21 @@ class Item:
         REPR method for the Item class
         """
         return f"Item({repr(self.name)}, {repr(self.description)})"
+
+
+class Lamp(Item):
+    def __init__(self, name, description, color):
+        super().__init__(name, description)
+        self.color = color
+
+    def __str__(self):
+        """
+        Replacement string method for the Lamp class
+        """
+        return f"{self.color} {self.name} - {self.description}"
+
+    def __repr__(self):
+        """
+        REPR method for the Lamp class
+        """
+        return f"Item({repr(self.name)}, {repr(self.description)}, {repr(self.color)})"
