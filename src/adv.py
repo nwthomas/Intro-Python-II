@@ -73,7 +73,7 @@ def choose_room(new_room):
         print("\nYou must select a valid direction.")
 
 
-def build_comment():
+def build_initial_comment():
     s = "You can move"
     if room[p.current_room].n_to is not None:
         s += " n,"
@@ -87,7 +87,7 @@ def build_comment():
         s += " drop [item],"
     if len(room[p.current_room].item_list) > 0:
         s += " get [item],"
-    s += " or (exit)."
+    s += " or (exit): "
     return s
 
 
@@ -95,15 +95,16 @@ while done is False:
     print("\n*************************************************")
     print(f"\nYou are currently in {room[p.current_room].name}.")
     print(room[p.current_room].description)
-    print("\nItems in inventory:")
+    if len(p.item_list) > 0:
+        print("\nItems in inventory:")
 
     if len(room[p.current_room].item_list) > 0:
         print("\nItems in room:")
         room[p.current_room].print_items()
 
     try:
-        print(build_comment())
-        selection = input("\nWhat do you choose? ").strip().lower().split(" ")
+        selection = input("\n" + build_initial_comment()
+                          ).strip().lower().split(" ")
 
         new_room = None
 

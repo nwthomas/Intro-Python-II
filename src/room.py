@@ -8,6 +8,9 @@ class Room:
         self.description = description
         self.item_list = item_list
 
+    def get_name(self):
+        return self.name
+
     def print_items(self):
         """
         Prints all items in the items_list
