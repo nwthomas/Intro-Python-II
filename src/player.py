@@ -22,8 +22,7 @@ class Player:
         Prints all items in the items_list
         """
         for item in self.item_list:
-            print(f"Item Name: {item.name}, Description: {item.description}")
-        print()
+            print(f"{item.name} - {item.description}")
 
     def add_item(self, item):
         """
