@@ -25,12 +25,16 @@ class Room:
         """
         self.item_list.append(item)
 
-    def drop_item(self, item):
+    def remove_item(self, item):
         """
         Drops an item from the Room's inventory
         """
-        i = self.item_list.index(item)
-        self.item_list = self.item_list[i:i+1]
+        new_item_list = []
+        for i in self.item_list:
+            if i.name is not item.name:
+                new_item_list.append(i)
+        print(new_item_list)
+        self.item_list = new_item_list
 
     def __getattr__(self, name):
         """

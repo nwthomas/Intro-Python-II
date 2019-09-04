@@ -17,25 +17,21 @@ class Player:
         """
         self.current_room = current_room
 
-    def print_items(self):
-        """
-        Prints all items in the items_list
-        """
-        for item in self.item_list:
-            print(f"{item.name} - {item.description}")
-
     def add_item(self, item):
         """
         Adds in a new item to the player's inventory
         """
         self.item_list.append(item)
 
-    def drop_item(self, item):
+    def remove_item(self, item):
         """
-        Drops an item from the Players's inventory
+        Drops an item from the Room's inventory
         """
-        i = self.item_list.index(item)
-        self.item_list = self.item_list[i:i+1]
+        new_item_list = []
+        for i in self.item_list:
+            if i.name is not item.name:
+                new_item_list.append(i)
+        self.item_list = new_item_list
 
     def __getattr__(self, name):
         """

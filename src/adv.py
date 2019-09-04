@@ -97,7 +97,8 @@ while done is False:
     print(room[p.current_room].description)
     if len(p.item_list) > 0:
         print("\nItems in inventory:")
-        p.print_items()
+        for item in p.item_list:
+            print(item)
 
     if len(room[p.current_room].item_list) > 0:
         print("\nItems in room:")
@@ -126,12 +127,17 @@ while done is False:
             new_room = room[p.current_room].w_to
             choose_room(new_room)
         elif selection[0] == "take" or selection[0] == "get":
-            moving_item = None
             for item in room[p.current_room].item_list:
                 if item.name.lower() == selection[1]:
                     p.add_item(item)
-                    room[p.current_room].drop_item(item)
+                    room[p.current_room].remove_item(item)
+        elif selection[0] == "drop" or selection[0] == "leave":
+            for item in p.item_list:
+                if item.name.lower() == selection[1]:
+                    p.remove_item(item)
+                    room[p.current_room].add_item(item)
 
     except:
+        print("\n*************************************************")
         print("\nThat is not a valid input.")
         continue
