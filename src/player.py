@@ -25,6 +25,12 @@ class Player:
             print(f"Item Name: {item.name}, Description: {item.description}")
         print()
 
+    def add_item(self, item):
+        """
+        Adds in a new item to the player's inventory
+        """
+        self.item_list.append(item)
+
     def __getattr__(self, name):
         """
         Defaults to None for any attribute not in the class currently

@@ -16,6 +16,12 @@ class Room:
             print(f"Item Name: {item.name}, Description: {item.description}")
         print()
 
+    def add_item(self, item):
+        """
+        Adds a new item to the Room's inventory when a plyer drops it
+        """
+        self.item_list.append(item)
+
     def __getattr__(self, name):
         """
         Defaults to None for any attribute not in the class currently
