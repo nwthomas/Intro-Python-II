@@ -1,25 +1,26 @@
 from room import Room
 from player import Player
+from item import Item
 
 # Declare all the rooms
 
 room = {
     'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons"),
+                     "North of you, the cave mount beckons", None),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
-passages run north and east."""),
+passages run north and east.""", [Item("Key", "An ancient gold key that shines with an ethereal shinner.")]),
 
     'overlook': Room("Grand Overlook", """A steep cliff appears before you, falling
 into the darkness. Ahead to the north, a light flickers in
-the distance, but there is no way across the chasm."""),
+the distance, but there is no way across the chasm.""", None),
 
     'narrow':   Room("Narrow Passage", """The narrow passage bends here from west
-to north. The smell of gold permeates the air."""),
+to north. The smell of gold permeates the air.""", [Item("Knife", "A cruel, rusty knife twisted by age and hate.")]),
 
     'treasure': Room("Treasure Chamber", """You've found the long-lost treasure
 chamber! Sadly, it has already been completely emptied by
-earlier adventurers. The only exit is to the south."""),
+earlier adventurers. The only exit is to the south.""", [Item("Treasure", "A chest of rubies, pearls, and gold coins.")]),
 }
 
 
@@ -73,8 +74,10 @@ def choose_room(new_room):
 
 
 while done is False:
+    print("\n************************************************")
     print(f"\nYou are currently in {room[p.current_room].name}.")
     print(room[p.current_room].description)
+    print()
 
     try:
         selection = input("Would you like to head n, s, e, or w (or exit)? ")
@@ -97,8 +100,6 @@ while done is False:
             continue
 
         choose_room(new_room)
-
-        print(p.current_room)
 
     except:
         print("\nThat is not a valid input.")
