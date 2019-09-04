@@ -2,6 +2,8 @@ from room import Room
 from player import Player
 from item import Item
 from item import Lamp
+from item import Treasure
+from item import Diamond
 
 # Declare all the rooms
 
@@ -21,7 +23,7 @@ to north. The smell of gold permeates the air.""", [Item("knife", "A cruel, rust
 
     'treasure': Room("Treasure Chamber", """You've found the long-lost treasure
 chamber! Sadly, it has already been completely emptied by
-earlier adventurers. The only exit is to the south.""", [Item("treasure", "A chest of rubies, pearls, and gold coins.")]),
+earlier adventurers. The only exit is to the south.""", [Diamond("diamond", "A diamond of pure light, shimmering in the soft torch-light.", "$2,000,000", "white")]),
 }
 
 
