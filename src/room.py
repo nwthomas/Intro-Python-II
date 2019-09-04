@@ -8,13 +8,18 @@ class Room:
         self.description = description
         self.item_list = item_list
 
-    def get_name(self):
+    def print_items(self):
         """
-        Returns the name of the instantiated Room class
+        Prints all items in the items list
         """
-        return self.name
+        for item in self.item_list:
+            print(f"Item Name: {item.name}, Description: {item.description}")
+        print()
 
     def __getattr__(self, name):
+        """
+        Defaults to None for any attribute not in the class currently
+        """
         return None
 
     def __str__(self):

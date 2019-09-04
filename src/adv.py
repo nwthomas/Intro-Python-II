@@ -6,14 +6,14 @@ from item import Item
 
 room = {
     'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons", None),
+                     "North of you, the cave mount beckons", []),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
 passages run north and east.""", [Item("Key", "An ancient gold key that shines with an ethereal shinner.")]),
 
     'overlook': Room("Grand Overlook", """A steep cliff appears before you, falling
 into the darkness. Ahead to the north, a light flickers in
-the distance, but there is no way across the chasm.""", None),
+the distance, but there is no way across the chasm.""", []),
 
     'narrow':   Room("Narrow Passage", """The narrow passage bends here from west
 to north. The smell of gold permeates the air.""", [Item("Knife", "A cruel, rusty knife twisted by age and hate.")]),
@@ -77,7 +77,9 @@ while done is False:
     print("\n************************************************")
     print(f"\nYou are currently in {room[p.current_room].name}.")
     print(room[p.current_room].description)
-    print()
+    if len(room[p.current_room].item_list) > 0:
+        print("\nHere's the items in this room:")
+        room[p.current_room].print_items()
 
     try:
         selection = input("Would you like to head n, s, e, or w (or exit)? ")
